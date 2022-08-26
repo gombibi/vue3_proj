@@ -41,6 +41,17 @@
         </template>
       </Suspense>
     </div>
+
+
+
+    <!-- <div class="flex flex-col gap-4">
+      <Suspense>
+        <CityCard />
+        <template #fallback>
+          <CityCardSkeleton/>
+        </template>
+      </Suspense>
+    </div> -->
   </main>
 </template>
 
@@ -51,6 +62,7 @@ import { useRouter } from "vue-router";
 // import CityCardSkeleton from "../components/CityCardSkeleton.vue";
 import CityList from "../components/CityList.vue";
 import CityCardSkeleton from "../components/CityCardSkeleton.vue";
+import CityCard from "../components/CityCard.vue";
 const router = useRouter();
 const previewCity = (searchResult) => {
   const [city, state] = searchResult.place_name.split(",");
@@ -87,6 +99,14 @@ const getSearchResults = () => {
     mapboxSearchResults.value = null;
   }, 300);
 };
+
+
+
+
+
+navigator.geolocation.getCurrentPosition((position) => {
+  console.log(position.coords.latitude, position.coords.longitude);
+})
 </script>
 
 <style lang="scss" scoped></style>
